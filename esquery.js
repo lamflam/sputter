@@ -11,7 +11,8 @@
     var LEFT_SIDE = {};
     var RIGHT_SIDE = {};
 
-    function esqueryModule() {
+    function makeEsquery(options) {
+        var getKeys = options.getKeys;
 
         /**
          * Get the value of a property which may be multiple levels down in the object.
@@ -94,7 +95,8 @@
                                 collector.push(node);
                               }
                           },
-                          leave: function () { a.shift(); }
+                          leave: function () { a.shift(); },
+                          fallback: getKeys
                       });
                     }
                     return collector.length !== 0;
@@ -200,7 +202,7 @@
         function sibling(node, selector, ancestry, side) {
             var parent = ancestry[0], listProp, startIndex, keys, i, l, k, lowerBound, upperBound;
             if (!parent) { return false; }
-            keys = estraverse.VisitorKeys[parent.type];
+            keys = getKeys(parent);
             for (i = 0, l = keys.length; i < l; ++i) {
                 listProp = parent[keys[i]];
                 if (isArray(listProp)) {
@@ -229,7 +231,7 @@
         function adjacent(node, selector, ancestry, side) {
             var parent = ancestry[0], listProp, keys, i, l, idx;
             if (!parent) { return false; }
-            keys = estraverse.VisitorKeys[parent.type];
+            keys = getKeys(parent);
             for (i = 0, l = keys.length; i < l; ++i) {
                 listProp = parent[keys[i]];
                 if (isArray(listProp)) {
@@ -252,7 +254,7 @@
         function nthChild(node, ancestry, idxFn) {
             var parent = ancestry[0], listProp, keys, i, l, idx;
             if (!parent) { return false; }
-            keys = estraverse.VisitorKeys[parent.type];
+            keys = getKeys(parent);
             for (i = 0, l = keys.length; i < l; ++i) {
                 listProp = parent[keys[i]];
                 if (isArray(listProp)) {
@@ -303,7 +305,8 @@
                         }
                     }
                 },
-                leave: function () { ancestry.shift(); }
+                leave: function () { ancestry.shift(); },
+                fallback: getKeys,
             });
             return results;
         }
@@ -328,13 +331,21 @@
         return query.query = query;
     }
 
+    var esqueryModule = makeEsquery({
+        getKeys: function getKeys(node) {
+            return estraverse.VisitorKeys[node.type];
+        }
+    });
+    esqueryModule.configure = makeEsquery;
 
     if (typeof define === "function" && define.amd) {
-        define(esqueryModule);
+        define(function() {
+            return esqueryModule
+        });
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = esqueryModule();
+        module.exports = esqueryModule;
     } else {
-        this.esquery = esqueryModule();
+        this.esquery = esqueryModule;
     }
 
 })();
