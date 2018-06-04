@@ -1,5 +1,5 @@
 {
-  "name": "esquery",
+  "name": "@suchipi/esquery",
   "preferGlobal": false,
   "version": "1.0.1",
   "author": "Joel Feenstra <jrfeenst+esquery@gmail.com>",
