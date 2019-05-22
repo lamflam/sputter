@@ -1,19 +1,10 @@
 const traverse = require("./traverse");
 const parser = require("../dist/parser");
 const lodashGet = require("lodash.get");
+const defaultEvalString = require("./defaultEvalString");
 
 const LEFT_SIDE = {};
 const RIGHT_SIDE = {};
-
-function defaultEvalString(node, codeString) {
-  const makeModuleEnv = require("make-module-env");
-  const vm = require("vm");
-  const path = require("path");
-
-  const env = makeModuleEnv(path.join(process.cwd(), "sputter-eval.js"));
-
-  return vm.runInNewContext(codeString, { require: env.require, node: node });
-}
 
 function makeLibrary(options) {
   options = options || {};
@@ -440,7 +431,7 @@ function makeLibrary(options) {
   return (query.query = query);
 }
 
-const sputterModule = makeLibrary();
-sputterModule.configure = makeLibrary;
+const sputter = makeLibrary();
+sputter.configure = makeLibrary;
 
-module.exports = sputterModule;
+module.exports = sputter;
