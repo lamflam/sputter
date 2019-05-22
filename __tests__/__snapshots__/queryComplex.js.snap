@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Complex selector query three types child IfStatement > BinaryExpression > Identifier 1`] = `
+> 1 | if (x === 1) {
+    |     ^ Identifier
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+`;
+
+exports[`Complex selector query two types adjacent VariableDeclaration + ExpressionStatement 1`] = `
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^^ ExpressionStatement
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+`;
+
+exports[`Complex selector query two types child IfStatement > BinaryExpression 1`] = `
+> 1 | if (x === 1) {
+    |     ^^^^^^^ BinaryExpression
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+`;
+
+exports[`Complex selector query two types descendant IfStatement BinaryExpression 1`] = `
+> 1 | if (x === 1) {
+    |     ^^^^^^^ BinaryExpression
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |      ^^^^^^^^^^^ BinaryExpression
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+`;
+
+exports[`Complex selector query two types sibling VariableDeclaration ~ IfStatement 1`] = `
+  2 | var y = "y";
+  3 | x = x * 2;
+> 4 | if (y) {
+    | ^^^^^^^
+> 5 |   y += "z";
+    | ^^^^^^^^^^^
+> 6 | }
+    | ^^ IfStatement
+  7 | 
+`;

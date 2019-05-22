@@ -12,8 +12,31 @@
   var LEFT_SIDE = {};
   var RIGHT_SIDE = {};
 
+  function defaultGetKeys(node) {
+    return estraverse.VisitorKeys[node.type];
+  }
+
+  function defaultEvalString(node, codeString) {
+    var makeModuleEnv = require("make-module-env");
+    var vm = require("vm");
+    var path = require("path");
+
+    var env = makeModuleEnv(path.join(process.cwd(), "esquery-eval.js"));
+
+    return Boolean(
+      vm.runInNewContext(codeString, { require: env.require, node: node })
+    );
+  }
+
   function makeEsquery(options) {
-    var getKeys = options.getKeys;
+    var getKeys =
+      typeof options === "object" && options.getKeys
+        ? options.getKeys
+        : defaultGetKeys;
+    var evalString =
+      typeof options === "object" && options.evalString
+        ? options.evalString
+        : defaultEvalString;
 
     /**
      * Get the value of a property which may be multiple levels down in the object.
@@ -123,7 +146,7 @@
               leave: function() {
                 a.shift();
               },
-              fallback: getKeys
+              fallback: getKeys,
             });
           }
           return collector.length !== 0;
@@ -417,7 +440,7 @@
         leave: function() {
           ancestry.shift();
         },
-        fallback: getKeys
+        fallback: getKeys,
       });
       return results;
     }
@@ -442,11 +465,7 @@
     return (query.query = query);
   }
 
-  var esqueryModule = makeEsquery({
-    getKeys: function getKeys(node) {
-      return estraverse.VisitorKeys[node.type];
-    }
-  });
+  var esqueryModule = makeEsquery();
   esqueryModule.configure = makeEsquery;
 
   if (typeof define === "function" && define.amd) {

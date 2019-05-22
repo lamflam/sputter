@@ -1,0 +1,346 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pseudo *-child query conditional first child :first-child 1`] = `
+> 1 | if (x === 1) {
+    | ^^^^^^^^^^^^^
+> 2 |   foo();
+    | ^^^^^^^^
+> 3 | } else {
+    | ^^^^^^^^
+> 4 |   x = 2;
+    | ^^^^^^^^
+> 5 | }
+    | ^^ IfStatement
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  8 | } else if (false) {
+  1 | if (x === 1) {
+> 2 |   foo();
+    |   ^^^^^^ ExpressionStatement
+  3 | } else {
+  4 |   x = 2;
+  5 | }
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^^^^^^ ExpressionStatement
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |   ^^^^^^^ ExpressionStatement
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   7 |   y = -1;
+   8 | } else if (false) {
+>  9 |   y = 1;
+     |   ^^^^^^ ExpressionStatement
+  10 | }
+  11 | 
+`;
+
+exports[`Pseudo *-child query conditional last child :last-child 1`] = `
+  1 | if (x === 1) {
+> 2 |   foo();
+    |   ^^^^^^ ExpressionStatement
+  3 | } else {
+  4 |   x = 2;
+  5 | }
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^^^^^^ ExpressionStatement
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+   4 |   x = 2;
+   5 | }
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |   ^^^^^^^ ExpressionStatement
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   7 |   y = -1;
+   8 | } else if (false) {
+>  9 |   y = 1;
+     |   ^^^^^^ ExpressionStatement
+  10 | }
+  11 | 
+`;
+
+exports[`Pseudo *-child query conditional nth child :nth-child(2) 1`] = `
+   4 |   x = 2;
+   5 | }
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+`;
+
+exports[`Pseudo *-child query conditional nth child :nth-last-child(2) 1`] = `
+> 1 | if (x === 1) {
+    | ^^^^^^^^^^^^^
+> 2 |   foo();
+    | ^^^^^^^^
+> 3 | } else {
+    | ^^^^^^^^
+> 4 |   x = 2;
+    | ^^^^^^^^
+> 5 | }
+    | ^^ IfStatement
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  8 | } else if (false) {
+`;
+
+exports[`Pseudo *-child query for loop first child :first-child 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ ForStatement
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^^^^^^^ ExpressionStatement
+  3 | }
+  4 | 
+`;
+
+exports[`Pseudo *-child query for loop last child :last-child 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ ForStatement
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^^^^^^^ ExpressionStatement
+  3 | }
+  4 | 
+`;
+
+exports[`Pseudo *-child query for loop nth child :nth-last-child(1) 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ ForStatement
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^^^^^^^ ExpressionStatement
+  3 | }
+  4 | 
+`;
+
+exports[`Pseudo *-child query simple function first child :first-child 1`] = `
+> 1 | function foo(x, y) {
+    | ^^^^^^^^^^^^^^^^^^^
+> 2 |   var z = x + y;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   z++;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   return z;
+    | ^^^^^^^^^^^^^^^^
+> 5 | }
+    | ^^ FunctionDeclaration
+  6 | 
+> 1 | function foo(x, y) {
+    |              ^ Identifier
+  2 |   var z = x + y;
+  3 |   z++;
+  4 |   return z;
+  1 | function foo(x, y) {
+> 2 |   var z = x + y;
+    |   ^^^^^^^^^^^^^^ VariableDeclaration
+  3 |   z++;
+  4 |   return z;
+  5 | }
+  1 | function foo(x, y) {
+> 2 |   var z = x + y;
+    |       ^^^^^^^^^ VariableDeclarator
+  3 |   z++;
+  4 |   return z;
+  5 | }
+`;
+
+exports[`Pseudo *-child query simple function last child :last-child 1`] = `
+> 1 | function foo(x, y) {
+    | ^^^^^^^^^^^^^^^^^^^
+> 2 |   var z = x + y;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   z++;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   return z;
+    | ^^^^^^^^^^^^^^^^
+> 5 | }
+    | ^^ FunctionDeclaration
+  6 | 
+> 1 | function foo(x, y) {
+    |                 ^ Identifier
+  2 |   var z = x + y;
+  3 |   z++;
+  4 |   return z;
+  1 | function foo(x, y) {
+> 2 |   var z = x + y;
+    |       ^^^^^^^^^ VariableDeclarator
+  3 |   z++;
+  4 |   return z;
+  5 | }
+  2 |   var z = x + y;
+  3 |   z++;
+> 4 |   return z;
+    |   ^^^^^^^^^ ReturnStatement
+  5 | }
+  6 | 
+`;
+
+exports[`Pseudo *-child query simple function nth child :nth-child(2) 1`] = `
+> 1 | function foo(x, y) {
+    |                 ^ Identifier
+  2 |   var z = x + y;
+  3 |   z++;
+  4 |   return z;
+  1 | function foo(x, y) {
+  2 |   var z = x + y;
+> 3 |   z++;
+    |   ^^^^ ExpressionStatement
+  4 |   return z;
+  5 | }
+  6 | 
+`;
+
+exports[`Pseudo *-child query simple function nth child :nth-child(3) 1`] = `
+  2 |   var z = x + y;
+  3 |   z++;
+> 4 |   return z;
+    |   ^^^^^^^^^ ReturnStatement
+  5 | }
+  6 | 
+`;
+
+exports[`Pseudo *-child query simple function nth child :nth-last-child(2) 1`] = `
+> 1 | function foo(x, y) {
+    |              ^ Identifier
+  2 |   var z = x + y;
+  3 |   z++;
+  4 |   return z;
+  1 | function foo(x, y) {
+  2 |   var z = x + y;
+> 3 |   z++;
+    |   ^^^^ ExpressionStatement
+  4 |   return z;
+  5 | }
+  6 | 
+`;
+
+exports[`Pseudo *-child query simple program first child :first-child 1`] = `
+> 1 | var x = 1;
+    | ^^^^^^^^^^ VariableDeclaration
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+> 1 | var x = 1;
+    |     ^^^^^ VariableDeclarator
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+  1 | var x = 1;
+> 2 | var y = "y";
+    |     ^^^^^^^ VariableDeclarator
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^^^^^^^^^ ExpressionStatement
+  6 | }
+  7 | 
+`;
+
+exports[`Pseudo *-child query simple program last child :last-child 1`] = `
+> 1 | var x = 1;
+    |     ^^^^^ VariableDeclarator
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+  1 | var x = 1;
+> 2 | var y = "y";
+    |     ^^^^^^^ VariableDeclarator
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+  2 | var y = "y";
+  3 | x = x * 2;
+> 4 | if (y) {
+    | ^^^^^^^
+> 5 |   y += "z";
+    | ^^^^^^^^^^^
+> 6 | }
+    | ^^ IfStatement
+  7 | 
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^^^^^^^^^ ExpressionStatement
+  6 | }
+  7 | 
+`;
+
+exports[`Pseudo *-child query simple program nth child :nth-child(2) 1`] = `
+  1 | var x = 1;
+> 2 | var y = "y";
+    | ^^^^^^^^^^^^ VariableDeclaration
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+`;
+
+exports[`Pseudo *-child query simple program nth child :nth-child(3) 1`] = `
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^^ ExpressionStatement
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+`;
+
+exports[`Pseudo *-child query simple program nth child :nth-last-child(2) 1`] = `
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^^ ExpressionStatement
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+`;

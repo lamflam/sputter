@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Type query # type #BinaryExpression 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    |             ^^^^^^^^^^^^^^ BinaryExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+`;
+
+exports[`Type query # type #ForStatement 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ ForStatement
+  4 | 
+`;
+
+exports[`Type query # type #Program 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^^^^^^^^^^
+> 4 | 
+    | ^ Program
+`;
+
+exports[`Type query case insensitive type Program 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^^^^^^^^^^
+> 4 | 
+    | ^ Program
+`;
+
+exports[`Type query case insensitive type binaryexpression 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    |             ^^^^^^^^^^^^^^ BinaryExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+`;
+
+exports[`Type query case insensitive type forStatement 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ ForStatement
+  4 | 
+`;
+
+exports[`Type query conditional ExpressionStatement 1`] = `
+  1 | if (x === 1) {
+> 2 |   foo();
+    |   ^^^^^^ ExpressionStatement
+  3 | } else {
+  4 |   x = 2;
+  5 | }
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^^^^^^ ExpressionStatement
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |   ^^^^^^^ ExpressionStatement
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   7 |   y = -1;
+   8 | } else if (false) {
+>  9 |   y = 1;
+     |   ^^^^^^ ExpressionStatement
+  10 | }
+  11 | 
+`;
+
+exports[`Type query conditional IfStatement 1`] = `
+> 1 | if (x === 1) {
+    | ^^^^^^^^^^^^^
+> 2 |   foo();
+    | ^^^^^^^^
+> 3 | } else {
+    | ^^^^^^^^
+> 4 |   x = 2;
+    | ^^^^^^^^
+> 5 | }
+    | ^^ IfStatement
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  8 | } else if (false) {
+   4 |   x = 2;
+   5 | }
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+   6 | if ((x == "test" && true) || x) {
+   7 |   y = -1;
+>  8 | } else if (false) {
+     |        ^^^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+`;
+
+exports[`Type query conditional LogicalExpression 1`] = `
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^ LogicalExpression
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |      ^^^^^^^^^^^^^^^^^^^ LogicalExpression
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+`;
+
+exports[`Type query conditional Program 1`] = `
+>  1 | if (x === 1) {
+     | ^^^^^^^^^^^^^
+>  2 |   foo();
+     | ^^^^^^^^
+>  3 | } else {
+     | ^^^^^^^^
+>  4 |   x = 2;
+     | ^^^^^^^^
+>  5 | }
+     | ^^^^^^^^
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^^^^^^^
+> 11 | 
+     | ^ Program
+`;
+
+exports[`Type query for loop BinaryExpression 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    |             ^^^^^^^^^^^^^^ BinaryExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+`;
+
+exports[`Type query for loop ForStatement 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ ForStatement
+  4 | 
+`;
+
+exports[`Type query for loop Program 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^^^^^^^^^^
+> 4 | 
+    | ^ Program
+`;
+
+exports[`Type query simple function FunctionDeclaration 1`] = `
+> 1 | function foo(x, y) {
+    | ^^^^^^^^^^^^^^^^^^^
+> 2 |   var z = x + y;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   z++;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   return z;
+    | ^^^^^^^^^^^^^^^^
+> 5 | }
+    | ^^ FunctionDeclaration
+  6 | 
+`;
+
+exports[`Type query simple function Program 1`] = `
+> 1 | function foo(x, y) {
+    | ^^^^^^^^^^^^^^^^^^^
+> 2 |   var z = x + y;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   z++;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   return z;
+    | ^^^^^^^^^^^^^^^^
+> 5 | }
+    | ^^^^^^^^^^^^^^^^
+> 6 | 
+    | ^ Program
+`;
+
+exports[`Type query simple function ReturnStatement 1`] = `
+  2 |   var z = x + y;
+  3 |   z++;
+> 4 |   return z;
+    |   ^^^^^^^^^ ReturnStatement
+  5 | }
+  6 | 
+`;
+
+exports[`Type query simple function VariableDeclaration 1`] = `
+  1 | function foo(x, y) {
+> 2 |   var z = x + y;
+    |   ^^^^^^^^^^^^^^ VariableDeclaration
+  3 |   z++;
+  4 |   return z;
+  5 | }
+`;
+
+exports[`Type query simple program AssignmentExpression 1`] = `
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^ AssignmentExpression
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^^^^^^^^ AssignmentExpression
+  6 | }
+  7 | 
+`;
+
+exports[`Type query simple program Identifier 1`] = `
+> 1 | var x = 1;
+    |     ^ Identifier
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+  1 | var x = 1;
+> 2 | var y = "y";
+    |     ^ Identifier
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^ Identifier
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    |     ^ Identifier
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  2 | var y = "y";
+  3 | x = x * 2;
+> 4 | if (y) {
+    |     ^ Identifier
+  5 |   y += "z";
+  6 | }
+  7 | 
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^ Identifier
+  6 | }
+  7 | 
+`;
+
+exports[`Type query simple program Program 1`] = `
+> 1 | var x = 1;
+    | ^^^^^^^^^
+> 2 | var y = "y";
+    | ^^^^^^^^^^^^
+> 3 | x = x * 2;
+    | ^^^^^^^^^^^^
+> 4 | if (y) {
+    | ^^^^^^^^^^^^
+> 5 |   y += "z";
+    | ^^^^^^^^^^^^
+> 6 | }
+    | ^^^^^^^^^^^^
+> 7 | 
+    | ^ Program
+`;
+
+exports[`Type query simple program VariableDeclaration 1`] = `
+> 1 | var x = 1;
+    | ^^^^^^^^^^ VariableDeclaration
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+  1 | var x = 1;
+> 2 | var y = "y";
+    | ^^^^^^^^^^^^ VariableDeclaration
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+`;

@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Class query :declaration :declaratioN 1`] = `
+> 1 | function a() {
+    | ^^^^^^^^^^^^^
+> 2 |   [a] = () => 0;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   new.target;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   \`test\`;
+    | ^^^^^^^^^^^^^^^^
+> 5 |   \`hello,\${name}\`;
+    | ^^^^^^^^^^^^^^^^
+> 6 | }
+    | ^^ FunctionDeclaration
+  7 | 
+`;
+
+exports[`Class query :expression :Expression 1`] = `
+> 1 | function a() {
+    |          ^ Identifier
+  2 |   [a] = () => 0;
+  3 |   new.target;
+  4 |   \`test\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |   ^^^^^^^^^^^^^ AssignmentExpression
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |    ^ Identifier
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |         ^^^^^^^ ArrowFunctionExpression
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |               ^ NumericLiteral
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+  2 |   [a] = () => 0;
+> 3 |   new.target;
+    |   ^^^^^^^^^^ MetaProperty
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  6 | }
+  2 |   [a] = () => 0;
+  3 |   new.target;
+> 4 |   \`test\`;
+    |   ^^^^^^ TemplateLiteral
+  5 |   \`hello,\${name}\`;
+  6 | }
+  7 | 
+  3 |   new.target;
+  4 |   \`test\`;
+> 5 |   \`hello,\${name}\`;
+    |   ^^^^^^^^^^^^^^^ TemplateLiteral
+  6 | }
+  7 | 
+  3 |   new.target;
+  4 |   \`test\`;
+> 5 |   \`hello,\${name}\`;
+    |            ^^^^ Identifier
+  6 | }
+  7 | 
+`;
+
+exports[`Class query :function :FUNCTION 1`] = `
+> 1 | function a() {
+    | ^^^^^^^^^^^^^
+> 2 |   [a] = () => 0;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   new.target;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   \`test\`;
+    | ^^^^^^^^^^^^^^^^
+> 5 |   \`hello,\${name}\`;
+    | ^^^^^^^^^^^^^^^^
+> 6 | }
+    | ^^ FunctionDeclaration
+  7 | 
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |         ^^^^^^^ ArrowFunctionExpression
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+`;
+
+exports[`Class query :pattern :paTTern 1`] = `
+> 1 | function a() {
+    |          ^ Identifier
+  2 |   [a] = () => 0;
+  3 |   new.target;
+  4 |   \`test\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |   ^^^^^^^^^^^^^ AssignmentExpression
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |   ^^^ ArrayPattern
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |    ^ Identifier
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |         ^^^^^^^ ArrowFunctionExpression
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |               ^ NumericLiteral
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+  2 |   [a] = () => 0;
+> 3 |   new.target;
+    |   ^^^^^^^^^^ MetaProperty
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  6 | }
+  2 |   [a] = () => 0;
+  3 |   new.target;
+> 4 |   \`test\`;
+    |   ^^^^^^ TemplateLiteral
+  5 |   \`hello,\${name}\`;
+  6 | }
+  7 | 
+  3 |   new.target;
+  4 |   \`test\`;
+> 5 |   \`hello,\${name}\`;
+    |   ^^^^^^^^^^^^^^^ TemplateLiteral
+  6 | }
+  7 | 
+  3 |   new.target;
+  4 |   \`test\`;
+> 5 |   \`hello,\${name}\`;
+    |            ^^^^ Identifier
+  6 | }
+  7 | 
+`;
+
+exports[`Class query :statement :statement 1`] = `
+> 1 | function a() {
+    | ^^^^^^^^^^^^^
+> 2 |   [a] = () => 0;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   new.target;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   \`test\`;
+    | ^^^^^^^^^^^^^^^^
+> 5 |   \`hello,\${name}\`;
+    | ^^^^^^^^^^^^^^^^
+> 6 | }
+    | ^^ FunctionDeclaration
+  7 | 
+> 1 | function a() {
+    |              ^
+> 2 |   [a] = () => 0;
+    | ^^^^^^^^^^^^^^^^
+> 3 |   new.target;
+    | ^^^^^^^^^^^^^^^^
+> 4 |   \`test\`;
+    | ^^^^^^^^^^^^^^^^
+> 5 |   \`hello,\${name}\`;
+    | ^^^^^^^^^^^^^^^^
+> 6 | }
+    | ^^ BlockStatement
+  7 | 
+  1 | function a() {
+> 2 |   [a] = () => 0;
+    |   ^^^^^^^^^^^^^^ ExpressionStatement
+  3 |   new.target;
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  1 | function a() {
+  2 |   [a] = () => 0;
+> 3 |   new.target;
+    |   ^^^^^^^^^^^ ExpressionStatement
+  4 |   \`test\`;
+  5 |   \`hello,\${name}\`;
+  6 | }
+  2 |   [a] = () => 0;
+  3 |   new.target;
+> 4 |   \`test\`;
+    |   ^^^^^^^ ExpressionStatement
+  5 |   \`hello,\${name}\`;
+  6 | }
+  7 | 
+  3 |   new.target;
+  4 |   \`test\`;
+> 5 |   \`hello,\${name}\`;
+    |   ^^^^^^^^^^^^^^^^ ExpressionStatement
+  6 | }
+  7 | 
+`;

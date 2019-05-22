@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field query field sequence .declarations.init 1`] = `
+> 1 | var x = 1;
+    |         ^ NumericLiteral
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+  1 | var x = 1;
+> 2 | var y = "y";
+    |         ^^^ StringLiteral
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+`;
+
+exports[`Field query single field .test 1`] = `
+> 1 | if (x === 1) {
+    |     ^^^^^^^ BinaryExpression
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^ LogicalExpression
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+   6 | if ((x == "test" && true) || x) {
+   7 |   y = -1;
+>  8 | } else if (false) {
+     |            ^^^^^ BooleanLiteral
+   9 |   y = 1;
+  10 | }
+  11 | 
+`;

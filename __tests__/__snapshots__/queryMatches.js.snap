@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pseudo matches query conditional matches :matches(IfStatement) 1`] = `
+> 1 | if (x === 1) {
+    | ^^^^^^^^^^^^^
+> 2 |   foo();
+    | ^^^^^^^^
+> 3 | } else {
+    | ^^^^^^^^
+> 4 |   x = 2;
+    | ^^^^^^^^
+> 5 | }
+    | ^^ IfStatement
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  8 | } else if (false) {
+   4 |   x = 2;
+   5 | }
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+   6 | if ((x == "test" && true) || x) {
+   7 |   y = -1;
+>  8 | } else if (false) {
+     |        ^^^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+`;
+
+exports[`Pseudo matches query for loop matches :matches(BinaryExpression, MemberExpression) 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    |             ^^^^^^^^^^^^^^ BinaryExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |                 ^^^^^^^^^^ MemberExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^^^^ MemberExpression
+  3 | }
+  4 | 
+`;
+
+exports[`Pseudo matches query implicit matches AssignmentExpression, BinaryExpression, NonExistant 1`] = `
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^ AssignmentExpression
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    |     ^^^^^ BinaryExpression
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^^^^^^^^ AssignmentExpression
+  6 | }
+  7 | 
+`;
+
+exports[`Pseudo matches query simple function matches :matches([name="foo"], ReturnStatement) 1`] = `
+> 1 | function foo(x, y) {
+    |          ^^^ Identifier
+  2 |   var z = x + y;
+  3 |   z++;
+  4 |   return z;
+  2 |   var z = x + y;
+  3 |   z++;
+> 4 |   return z;
+    |   ^^^^^^^^^ ReturnStatement
+  5 | }
+  6 | 
+`;
+
+exports[`Pseudo matches query simple program matches :matches(AssignmentExpression, BinaryExpression) 1`] = `
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^ AssignmentExpression
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    |     ^^^^^ BinaryExpression
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^^^^^^^^ AssignmentExpression
+  6 | }
+  7 | 
+`;

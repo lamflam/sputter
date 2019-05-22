@@ -1,0 +1,548 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pseudo matches query conditional :not(Literal) 1`] = `
+>  1 | if (x === 1) {
+     | ^^^^^^^^^^^^^
+>  2 |   foo();
+     | ^^^^^^^^
+>  3 | } else {
+     | ^^^^^^^^
+>  4 |   x = 2;
+     | ^^^^^^^^
+>  5 | }
+     | ^^^^^^^^
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^^^^^^^
+> 11 | 
+     | ^ File
+>  1 | if (x === 1) {
+     | ^^^^^^^^^^^^^
+>  2 |   foo();
+     | ^^^^^^^^
+>  3 | } else {
+     | ^^^^^^^^
+>  4 |   x = 2;
+     | ^^^^^^^^
+>  5 | }
+     | ^^^^^^^^
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^^^^^^^
+> 11 | 
+     | ^ Program
+> 1 | if (x === 1) {
+    | ^^^^^^^^^^^^^
+> 2 |   foo();
+    | ^^^^^^^^
+> 3 | } else {
+    | ^^^^^^^^
+> 4 |   x = 2;
+    | ^^^^^^^^
+> 5 | }
+    | ^^ IfStatement
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  8 | } else if (false) {
+> 1 | if (x === 1) {
+    |     ^^^^^^^ BinaryExpression
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+> 1 | if (x === 1) {
+    |     ^ Identifier
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+> 1 | if (x === 1) {
+    |           ^ NumericLiteral
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+> 1 | if (x === 1) {
+    |              ^
+> 2 |   foo();
+    | ^^^^^^^^
+> 3 | } else {
+    | ^^ BlockStatement
+  4 |   x = 2;
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  1 | if (x === 1) {
+> 2 |   foo();
+    |   ^^^^^^ ExpressionStatement
+  3 | } else {
+  4 |   x = 2;
+  5 | }
+  1 | if (x === 1) {
+> 2 |   foo();
+    |   ^^^^^ CallExpression
+  3 | } else {
+  4 |   x = 2;
+  5 | }
+  1 | if (x === 1) {
+> 2 |   foo();
+    |   ^^^ Identifier
+  3 | } else {
+  4 |   x = 2;
+  5 | }
+  1 | if (x === 1) {
+  2 |   foo();
+> 3 | } else {
+    |        ^
+> 4 |   x = 2;
+    | ^^^^^^^^
+> 5 | }
+    | ^^ BlockStatement
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  8 | } else if (false) {
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^^^^^^ ExpressionStatement
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^^^^^ AssignmentExpression
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^ Identifier
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |       ^ NumericLiteral
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+   4 |   x = 2;
+   5 | }
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^ LogicalExpression
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |      ^^^^^^^^^^^^^^^^^^^ LogicalExpression
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |      ^^^^^^^^^^^ BinaryExpression
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |      ^ Identifier
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |           ^^^^^^ StringLiteral
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |                     ^^^^ BooleanLiteral
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |                              ^ Identifier
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+   4 |   x = 2;
+   5 | }
+>  6 | if ((x == "test" && true) || x) {
+     |                                 ^
+>  7 |   y = -1;
+     | ^^^^^^^^^
+>  8 | } else if (false) {
+     | ^^ BlockStatement
+   9 |   y = 1;
+  10 | }
+  11 | 
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |   ^^^^^^^ ExpressionStatement
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |   ^^^^^^ AssignmentExpression
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |   ^ Identifier
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |       ^^ UnaryExpression
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   5 | }
+   6 | if ((x == "test" && true) || x) {
+>  7 |   y = -1;
+     |        ^ NumericLiteral
+   8 | } else if (false) {
+   9 |   y = 1;
+  10 | }
+   6 | if ((x == "test" && true) || x) {
+   7 |   y = -1;
+>  8 | } else if (false) {
+     |        ^^^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+   6 | if ((x == "test" && true) || x) {
+   7 |   y = -1;
+>  8 | } else if (false) {
+     |            ^^^^^ BooleanLiteral
+   9 |   y = 1;
+  10 | }
+  11 | 
+   6 | if ((x == "test" && true) || x) {
+   7 |   y = -1;
+>  8 | } else if (false) {
+     |                   ^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^ BlockStatement
+  11 | 
+   7 |   y = -1;
+   8 | } else if (false) {
+>  9 |   y = 1;
+     |   ^^^^^^ ExpressionStatement
+  10 | }
+  11 | 
+   7 |   y = -1;
+   8 | } else if (false) {
+>  9 |   y = 1;
+     |   ^^^^^ AssignmentExpression
+  10 | }
+  11 | 
+   7 |   y = -1;
+   8 | } else if (false) {
+>  9 |   y = 1;
+     |   ^ Identifier
+  10 | }
+  11 | 
+   7 |   y = -1;
+   8 | } else if (false) {
+>  9 |   y = 1;
+     |       ^ NumericLiteral
+  10 | }
+  11 | 
+`;
+
+exports[`Pseudo matches query for loop :not([name="x"]) 1`] = `
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^^^^^^^^^^
+> 4 | 
+    | ^ File
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^^^^^^^^^^
+> 4 | 
+    | ^ Program
+> 1 | for (i = 0; i < foo.length; i++) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ ForStatement
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |      ^^^^^ AssignmentExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |      ^ Identifier
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |          ^ NumericLiteral
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |             ^^^^^^^^^^^^^^ BinaryExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |             ^ Identifier
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |                 ^^^^^^^^^^ MemberExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |                 ^^^ Identifier
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |                     ^^^^^^ Identifier
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |                             ^^^ UpdateExpression
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |                             ^ Identifier
+  2 |   foo[i]();
+  3 | }
+  4 | 
+> 1 | for (i = 0; i < foo.length; i++) {
+    |                                  ^
+> 2 |   foo[i]();
+    | ^^^^^^^^^^^
+> 3 | }
+    | ^^ BlockStatement
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^^^^^^^ ExpressionStatement
+  3 | }
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^^^^^^ CallExpression
+  3 | }
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^^^^ MemberExpression
+  3 | }
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |   ^^^ Identifier
+  3 | }
+  4 | 
+  1 | for (i = 0; i < foo.length; i++) {
+> 2 |   foo[i]();
+    |       ^ Identifier
+  3 | }
+  4 | 
+`;
+
+exports[`Pseudo matches query simple function :not(*) 1`] = ``;
+
+exports[`Pseudo matches query simple program :not(Identifier, IfStatement) 1`] = `
+> 1 | var x = 1;
+    | ^^^^^^^^^
+> 2 | var y = "y";
+    | ^^^^^^^^^^^^
+> 3 | x = x * 2;
+    | ^^^^^^^^^^^^
+> 4 | if (y) {
+    | ^^^^^^^^^^^^
+> 5 |   y += "z";
+    | ^^^^^^^^^^^^
+> 6 | }
+    | ^^^^^^^^^^^^
+> 7 | 
+    | ^ File
+> 1 | var x = 1;
+    | ^^^^^^^^^
+> 2 | var y = "y";
+    | ^^^^^^^^^^^^
+> 3 | x = x * 2;
+    | ^^^^^^^^^^^^
+> 4 | if (y) {
+    | ^^^^^^^^^^^^
+> 5 |   y += "z";
+    | ^^^^^^^^^^^^
+> 6 | }
+    | ^^^^^^^^^^^^
+> 7 | 
+    | ^ Program
+> 1 | var x = 1;
+    | ^^^^^^^^^^ VariableDeclaration
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+> 1 | var x = 1;
+    |     ^^^^^ VariableDeclarator
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+> 1 | var x = 1;
+    |         ^ NumericLiteral
+  2 | var y = "y";
+  3 | x = x * 2;
+  4 | if (y) {
+  1 | var x = 1;
+> 2 | var y = "y";
+    | ^^^^^^^^^^^^ VariableDeclaration
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+  1 | var x = 1;
+> 2 | var y = "y";
+    |     ^^^^^^^ VariableDeclarator
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+  1 | var x = 1;
+> 2 | var y = "y";
+    |         ^^^ StringLiteral
+  3 | x = x * 2;
+  4 | if (y) {
+  5 |   y += "z";
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^^ ExpressionStatement
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    | ^^^^^^^^^ AssignmentExpression
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    |     ^^^^^ BinaryExpression
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  1 | var x = 1;
+  2 | var y = "y";
+> 3 | x = x * 2;
+    |         ^ NumericLiteral
+  4 | if (y) {
+  5 |   y += "z";
+  6 | }
+  2 | var y = "y";
+  3 | x = x * 2;
+> 4 | if (y) {
+    |        ^
+> 5 |   y += "z";
+    | ^^^^^^^^^^^
+> 6 | }
+    | ^^ BlockStatement
+  7 | 
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^^^^^^^^^ ExpressionStatement
+  6 | }
+  7 | 
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |   ^^^^^^^^ AssignmentExpression
+  6 | }
+  7 | 
+  3 | x = x * 2;
+  4 | if (y) {
+> 5 |   y += "z";
+    |        ^^^ StringLiteral
+  6 | }
+  7 | 
+`;
+
+exports[`Pseudo matches query small program :not([value=1]) 1`] = `
+> 1 | var x = 1;
+    | ^^^^^^^^^
+> 2 | 
+    | ^ File
+> 1 | var x = 1;
+    | ^^^^^^^^^
+> 2 | 
+    | ^ Program
+> 1 | var x = 1;
+    | ^^^^^^^^^^ VariableDeclaration
+  2 | 
+> 1 | var x = 1;
+    |     ^^^^^ VariableDeclarator
+  2 | 
+> 1 | var x = 1;
+    |     ^ Identifier
+  2 | 
+`;

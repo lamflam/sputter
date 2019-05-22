@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pseudo matches query #8: descendant selector includes ancestor in search AssignmentExpression [name=x] 1`] = `
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^ Identifier
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+`;
+
+exports[`Pseudo matches query #8: descendant selector includes ancestor in search BinaryExpression [name=x] 1`] = `
+> 1 | if (x === 1) {
+    |     ^ Identifier
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |      ^ Identifier
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+`;
+
+exports[`Pseudo matches query #8: descendant selector includes ancestor in search Identifier [name=x] 1`] = ``;
+
+exports[`Pseudo matches query #8: descendant selector includes ancestor in search Identifier[name=x] 1`] = `
+> 1 | if (x === 1) {
+    |     ^ Identifier
+  2 |   foo();
+  3 | } else {
+  4 |   x = 2;
+  2 |   foo();
+  3 | } else {
+> 4 |   x = 2;
+    |   ^ Identifier
+  5 | }
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |      ^ Identifier
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+  4 |   x = 2;
+  5 | }
+> 6 | if ((x == "test" && true) || x) {
+    |                              ^ Identifier
+  7 |   y = -1;
+  8 | } else if (false) {
+  9 |   y = 1;
+`;
+
+exports[`Pseudo matches query conditional matches Program IfStatement 1`] = `
+> 1 | if (x === 1) {
+    | ^^^^^^^^^^^^^
+> 2 |   foo();
+    | ^^^^^^^^
+> 3 | } else {
+    | ^^^^^^^^
+> 4 |   x = 2;
+    | ^^^^^^^^
+> 5 | }
+    | ^^ IfStatement
+  6 | if ((x == "test" && true) || x) {
+  7 |   y = -1;
+  8 | } else if (false) {
+   4 |   x = 2;
+   5 | }
+>  6 | if ((x == "test" && true) || x) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |   y = -1;
+     | ^^^^^^^^^
+>  8 | } else if (false) {
+     | ^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+   6 | if ((x == "test" && true) || x) {
+   7 |   y = -1;
+>  8 | } else if (false) {
+     |        ^^^^^^^^^^^
+>  9 |   y = 1;
+     | ^^^^^^^^
+> 10 | }
+     | ^^ IfStatement
+  11 | 
+`;
