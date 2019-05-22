@@ -1,10 +1,10 @@
 {
   "name": "sputter",
   "preferGlobal": false,
-  "version": "1.0.1",
+  "version": "0.0.1",
   "author": "Suchipi <me@suchipi.com>",
   "description": "A library for querying any AST using a CSS-selector-like query language.",
-  "main": "esquery.js",
+  "main": "sputter.js",
   "scripts": {
     "test": "jest"
   },
