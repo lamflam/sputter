@@ -7,7 +7,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "pegjs --cache --export-var 'module.exports' < 'src/grammar.pegjs' > 'dist/parser.js'",
-    "test": "jest"
+    "test": "yarn build && jest"
   },
   "repository": {
     "type": "git",

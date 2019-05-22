@@ -2,10 +2,6 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
-  allClasses: fs.readFileSync(
-    path.resolve(__dirname, "./fixtureFiles/allClasses.js"),
-    "utf-8"
-  ),
   bigArray: fs.readFileSync(
     path.resolve(__dirname, "./fixtureFiles/bigArray.js"),
     "utf-8"
