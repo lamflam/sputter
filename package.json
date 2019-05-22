@@ -6,6 +6,7 @@
   "description": "A library for querying any AST using a CSS-selector-like query language.",
   "main": "sputter.js",
   "scripts": {
+    "build": "pegjs --cache --export-var 'module.exports' < 'grammar.pegjs' > 'parser.js'",
     "test": "jest"
   },
   "repository": {
