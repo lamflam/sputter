@@ -44,3 +44,23 @@ const sputter = require("sputter");
 
 sputter.query(ast, "Foo > Bar[value=5]"); // [ { type: "Bar", value: 5 } ]
 ```
+
+If your ast uses a key other than `type` to identify the type of a node, use `.configure`:
+
+```js
+const ast = {
+  kind: "Foo",
+  children: [
+    {
+      kind: "Bar",
+      value: 5,
+    },
+  ],
+};
+
+const sputter = require("sputter").configure({
+  identifierKey: "kind",
+});
+
+sputter.query(ast, "Foo > Bar[value=5]"); // [ { kind: "Bar", value: 5 } ]
+```

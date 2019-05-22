@@ -1,69 +1,40 @@
-var estraverse = require("estraverse");
-var parser = require("./parser");
+const traverse = require("./traverse");
+const parser = require("./parser");
+const lodashGet = require("lodash.get");
 
-var isArray =
-  Array.isArray ||
-  function isArray(array) {
-    return {}.toString.call(array) === "[object Array]";
-  };
-
-var LEFT_SIDE = {};
-var RIGHT_SIDE = {};
-
-function defaultGetKeys(node) {
-  return Object.keys(node);
-}
+const LEFT_SIDE = {};
+const RIGHT_SIDE = {};
 
 function defaultEvalString(node, codeString) {
-  var makeModuleEnv = require("make-module-env");
-  var vm = require("vm");
-  var path = require("path");
+  const makeModuleEnv = require("make-module-env");
+  const vm = require("vm");
+  const path = require("path");
 
-  var env = makeModuleEnv(path.join(process.cwd(), "sputter-eval.js"));
+  const env = makeModuleEnv(path.join(process.cwd(), "sputter-eval.js"));
 
   return vm.runInNewContext(codeString, { require: env.require, node: node });
 }
 
 function makeLibrary(options) {
-  var getKeys =
-    typeof options === "object" && options.getKeys
-      ? options.getKeys
-      : defaultGetKeys;
-  var evalString =
-    typeof options === "object" && options.evalString
-      ? options.evalString
-      : defaultEvalString;
+  options = options || {};
 
-  /**
-   * Get the value of a property which may be multiple levels down in the object.
-   */
-  function getPath(obj, key) {
-    var i,
-      keys = key.split(".");
-    for (i = 0; i < keys.length; i++) {
-      if (obj == null) {
-        return obj;
-      }
-      obj = obj[keys[i]];
-    }
-    return obj;
-  }
+  const evalString = options.evalString || defaultEvalString;
+  const identifierKey = options.identifierKey || "type";
 
   /**
    * Determine whether `node` can be reached by following `path`, starting at `ancestor`.
    */
   function inPath(node, ancestor, path) {
-    var field, remainingPath, i;
     if (path.length === 0) {
       return node === ancestor;
     }
     if (ancestor == null) {
       return false;
     }
-    field = ancestor[path[0]];
-    remainingPath = path.slice(1);
-    if (isArray(field)) {
-      for (i = 0, l = field.length; i < l; ++i) {
+    const field = ancestor[path[0]];
+    const remainingPath = path.slice(1);
+    if (Array.isArray(field)) {
+      for (let i = 0, l = field.length; i < l; ++i) {
         if (inPath(node, field[i], remainingPath)) {
           return true;
         }
@@ -78,7 +49,6 @@ function makeLibrary(options) {
    * Given a `node` and its ancestors, determine if `node` is matched by `selector`.
    */
   function matches(node, selector, ancestry) {
-    var path, ancestor, i, l, p;
     if (!selector) {
       return true;
     }
@@ -90,117 +60,135 @@ function makeLibrary(options) {
     }
 
     switch (selector.type) {
-      case "wildcard":
+      case "wildcard": {
         return true;
+      }
 
-      case "identifier":
-        return selector.value.toLowerCase() === node.type.toLowerCase();
+      case "identifier": {
+        return (
+          node[identifierKey] != null &&
+          node[identifierKey].toLowerCase() === selector.value.toLowerCase()
+        );
+      }
 
-      case "field":
-        path = selector.name.split(".");
-        ancestor = ancestry[path.length - 1];
+      case "field": {
+        const path = selector.name.split(".");
+        const ancestor = ancestry[path.length - 1];
         return inPath(node, ancestor, path);
+      }
 
-      case "matches":
-        for (i = 0, l = selector.selectors.length; i < l; ++i) {
+      case "matches": {
+        for (let i = 0, l = selector.selectors.length; i < l; ++i) {
           if (matches(node, selector.selectors[i], ancestry)) {
             return true;
           }
         }
         return false;
+      }
 
-      case "compound":
-        for (i = 0, l = selector.selectors.length; i < l; ++i) {
+      case "compound": {
+        for (let i = 0, l = selector.selectors.length; i < l; ++i) {
           if (!matches(node, selector.selectors[i], ancestry)) {
             return false;
           }
         }
         return true;
+      }
 
-      case "not":
-        for (i = 0, l = selector.selectors.length; i < l; ++i) {
+      case "not": {
+        for (let i = 0, l = selector.selectors.length; i < l; ++i) {
           if (matches(node, selector.selectors[i], ancestry)) {
             return false;
           }
         }
         return true;
+      }
 
-      case "has":
-        var a,
-          collector = [];
-        for (i = 0, l = selector.selectors.length; i < l; ++i) {
-          a = [];
-          estraverse.traverse(node, {
-            enter: function(node, parent) {
+      case "has": {
+        const matchingNodes = [];
+
+        for (let i = 0; i < selector.selectors.length; ++i) {
+          const ancestry = [];
+          traverse(node, {
+            enter(node, parent) {
               if (parent != null) {
-                a.unshift(parent);
+                ancestry.unshift(parent);
               }
-              if (matches(node, selector.selectors[i], a)) {
-                collector.push(node);
+              if (matches(node, selector.selectors[i], ancestry)) {
+                matchingNodes.push(node);
               }
             },
-            leave: function() {
-              a.shift();
+            leave() {
+              ancestry.shift();
             },
-            fallback: getKeys,
+            identifierKey,
           });
         }
-        return collector.length !== 0;
 
-      case "eval":
+        return matchingNodes.length !== 0;
+      }
+
+      case "eval": {
         return Boolean(evalString(node, selector.string.value));
+      }
 
-      case "child":
+      case "child": {
         if (matches(node, selector.right, ancestry)) {
           return matches(ancestry[0], selector.left, ancestry.slice(1));
         }
         return false;
+      }
 
-      case "descendant":
+      case "descendant": {
         if (matches(node, selector.right, ancestry)) {
-          for (i = 0, l = ancestry.length; i < l; ++i) {
+          for (let i = 0, l = ancestry.length; i < l; ++i) {
             if (matches(ancestry[i], selector.left, ancestry.slice(i + 1))) {
               return true;
             }
           }
         }
         return false;
+      }
 
-      case "attribute":
-        p = getPath(node, selector.name);
+      case "attribute": {
+        const attributeValue = lodashGet(node, selector.name);
         switch (selector.operator) {
           case null:
           case void 0:
-            return p != null;
+            return attributeValue != null;
           case "=":
             switch (selector.value.type) {
               case "regexp":
-                return typeof p === "string" && selector.value.value.test(p);
+                return (
+                  typeof attributeValue === "string" &&
+                  selector.value.value.test(attributeValue)
+                );
               case "literal":
-                return "" + selector.value.value === "" + p;
+                return "" + selector.value.value === "" + attributeValue;
               case "type":
-                return selector.value.value === typeof p;
+                return selector.value.value === typeof attributeValue;
             }
           case "!=":
             switch (selector.value.type) {
               case "regexp":
-                return !selector.value.value.test(p);
+                return !selector.value.value.test(attributeValue);
               case "literal":
-                return "" + selector.value.value !== "" + p;
+                return "" + selector.value.value !== "" + attributeValue;
               case "type":
-                return selector.value.value !== typeof p;
+                return selector.value.value !== typeof attributeValue;
             }
           case "<=":
-            return p <= selector.value.value;
+            return attributeValue <= selector.value.value;
           case "<":
-            return p < selector.value.value;
+            return attributeValue < selector.value.value;
           case ">":
-            return p > selector.value.value;
+            return attributeValue > selector.value.value;
           case ">=":
-            return p >= selector.value.value;
+            return attributeValue >= selector.value.value;
         }
+      }
 
-      case "sibling":
+      case "sibling": {
         return (
           (matches(node, selector.right, ancestry) &&
             sibling(node, selector.left, ancestry, LEFT_SIDE)) ||
@@ -208,8 +196,9 @@ function makeLibrary(options) {
             matches(node, selector.left, ancestry) &&
             sibling(node, selector.right, ancestry, RIGHT_SIDE))
         );
+      }
 
-      case "adjacent":
+      case "adjacent": {
         return (
           (matches(node, selector.right, ancestry) &&
             adjacent(node, selector.left, ancestry, LEFT_SIDE)) ||
@@ -217,24 +206,27 @@ function makeLibrary(options) {
             matches(node, selector.left, ancestry) &&
             adjacent(node, selector.right, ancestry, RIGHT_SIDE))
         );
+      }
 
-      case "nth-child":
+      case "nth-child": {
         return (
           matches(node, selector.right, ancestry) &&
           nthChild(node, ancestry, function(length) {
             return selector.index.value - 1;
           })
         );
+      }
 
-      case "nth-last-child":
+      case "nth-last-child": {
         return (
           matches(node, selector.right, ancestry) &&
           nthChild(node, ancestry, function(length) {
             return length - selector.index.value;
           })
         );
+      }
 
-      case "class":
+      case "class": {
         if (!node.type) return false;
         switch (selector.name.toLowerCase()) {
           case "statement":
@@ -261,6 +253,7 @@ function makeLibrary(options) {
             );
         }
         throw new Error("Unknown class name: " + selector.name);
+      }
     }
 
     throw new Error("Unknown selector type: " + selector.type);
@@ -270,26 +263,21 @@ function makeLibrary(options) {
    * Determines if the given node has a sibling that matches the given selector.
    */
   function sibling(node, selector, ancestry, side) {
-    var parent = ancestry[0],
-      listProp,
-      startIndex,
-      keys,
-      i,
-      l,
-      k,
-      lowerBound,
-      upperBound;
+    const parent = ancestry[0];
     if (!parent) {
       return false;
     }
-    keys = getKeys(parent);
-    for (i = 0, l = keys.length; i < l; ++i) {
-      listProp = parent[keys[i]];
-      if (isArray(listProp)) {
-        startIndex = listProp.indexOf(node);
+    const keys = Object.keys(parent);
+    for (let i = 0; i < keys.length; ++i) {
+      const listProp = parent[keys[i]];
+      if (Array.isArray(listProp)) {
+        const startIndex = listProp.indexOf(node);
         if (startIndex < 0) {
           continue;
         }
+
+        let lowerBound;
+        let upperBound;
         if (side === LEFT_SIDE) {
           lowerBound = 0;
           upperBound = startIndex;
@@ -297,7 +285,8 @@ function makeLibrary(options) {
           lowerBound = startIndex + 1;
           upperBound = listProp.length;
         }
-        for (k = lowerBound; k < upperBound; ++k) {
+
+        for (let k = lowerBound; k < upperBound; ++k) {
           if (matches(listProp[k], selector, ancestry)) {
             return true;
           }
@@ -311,20 +300,15 @@ function makeLibrary(options) {
    * Determines if the given node has an asjacent sibling that matches the given selector.
    */
   function adjacent(node, selector, ancestry, side) {
-    var parent = ancestry[0],
-      listProp,
-      keys,
-      i,
-      l,
-      idx;
+    const parent = ancestry[0];
     if (!parent) {
       return false;
     }
-    keys = getKeys(parent);
-    for (i = 0, l = keys.length; i < l; ++i) {
-      listProp = parent[keys[i]];
-      if (isArray(listProp)) {
-        idx = listProp.indexOf(node);
+    const keys = Object.keys(parent);
+    for (let i = 0; i < keys.length; ++i) {
+      const listProp = parent[keys[i]];
+      if (Array.isArray(listProp)) {
+        const idx = listProp.indexOf(node);
         if (idx < 0) {
           continue;
         }
@@ -351,20 +335,15 @@ function makeLibrary(options) {
    * Determines if the given node is the nth child, determined by idxFn, which is given the containing list's length.
    */
   function nthChild(node, ancestry, idxFn) {
-    var parent = ancestry[0],
-      listProp,
-      keys,
-      i,
-      l,
-      idx;
+    const parent = ancestry[0];
     if (!parent) {
       return false;
     }
-    keys = getKeys(parent);
-    for (i = 0, l = keys.length; i < l; ++i) {
-      listProp = parent[keys[i]];
-      if (isArray(listProp)) {
-        idx = listProp.indexOf(node);
+    const keys = Object.keys(parent);
+    for (i = 0; i < keys.length; ++i) {
+      const listProp = parent[keys[i]];
+      if (Array.isArray(listProp)) {
+        const idx = listProp.indexOf(node);
         if (idx >= 0 && idx === idxFn(listProp.length)) {
           return true;
         }
@@ -377,53 +356,50 @@ function makeLibrary(options) {
    * For each selector node marked as a subject, find the portion of the selector that the subject must match.
    */
   function subjects(selector, ancestor) {
-    var results, p;
     if (selector == null || typeof selector != "object") {
       return [];
     }
     if (ancestor == null) {
       ancestor = selector;
     }
-    results = selector.subject ? [ancestor] : [];
-    for (p in selector) {
-      if (!{}.hasOwnProperty.call(selector, p)) {
+    const results = selector.subject ? [ancestor] : [];
+    for (let property in selector) {
+      if (!{}.hasOwnProperty.call(selector, property)) {
         continue;
       }
       [].push.apply(
         results,
-        subjects(selector[p], p === "left" ? selector[p] : ancestor)
+        subjects(
+          selector[property],
+          property === "left" ? selector[property] : ancestor
+        )
       );
     }
     return results;
   }
 
   /**
-   * From a JS AST and a selector AST, collect all JS AST nodes that match the selector.
+   * From a code AST and a selector AST, collect all code AST nodes that match the selector.
    */
   function match(ast, selector) {
-    var ancestry = [],
-      results = [],
-      altSubjects,
-      i,
-      l,
-      k,
-      m;
+    const ancestry = [];
+    const results = [];
     if (!selector) {
       return results;
     }
-    altSubjects = subjects(selector);
-    estraverse.traverse(ast, {
+    const altSubjects = subjects(selector);
+    traverse(ast, {
       enter: function(node, parent) {
         if (parent != null) {
           ancestry.unshift(parent);
         }
         if (matches(node, selector, ancestry)) {
           if (altSubjects.length) {
-            for (i = 0, l = altSubjects.length; i < l; ++i) {
+            for (let i = 0; i < altSubjects.length; ++i) {
               if (matches(node, altSubjects[i], ancestry)) {
                 results.push(node);
               }
-              for (k = 0, m = ancestry.length; k < m; ++k) {
+              for (let k = 0; k < ancestry.length; ++k) {
                 if (
                   matches(ancestry[k], altSubjects[i], ancestry.slice(k + 1))
                 ) {
@@ -439,7 +415,7 @@ function makeLibrary(options) {
       leave: function() {
         ancestry.shift();
       },
-      fallback: getKeys,
+      identifierKey,
     });
     return results;
   }
@@ -464,7 +440,7 @@ function makeLibrary(options) {
   return (query.query = query);
 }
 
-var sputterModule = makeLibrary();
+const sputterModule = makeLibrary();
 sputterModule.configure = makeLibrary;
 
 module.exports = sputterModule;
