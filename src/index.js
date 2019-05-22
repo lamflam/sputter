@@ -1,5 +1,5 @@
 const traverse = require("./traverse");
-const parser = require("./parser");
+const parser = require("../dist/parser");
 const lodashGet = require("lodash.get");
 
 const LEFT_SIDE = {};

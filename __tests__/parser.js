@@ -1,4 +1,4 @@
-const sputter = require("../sputter");
+const sputter = require("..");
 
 describe("basic query parsing", () => {
   test("empty query", () => {

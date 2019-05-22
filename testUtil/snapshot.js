@@ -1,4 +1,4 @@
-const sputter = require("../sputter");
+const sputter = require("..");
 const { parse } = require("@babel/parser");
 const { codeFrameColumns } = require("@babel/code-frame");
 const { wrap } = require("jest-snapshot-serializer-raw");
