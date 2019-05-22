@@ -1,4 +1,3 @@
-/* vim: set sw=4 sts=4 : */
 (function() {
   var estraverse = require("estraverse");
   var parser = require("./parser");
@@ -13,7 +12,7 @@
   var RIGHT_SIDE = {};
 
   function defaultGetKeys(node) {
-    return estraverse.VisitorKeys[node.type];
+    return Object.keys(node);
   }
 
   function defaultEvalString(node, codeString) {
@@ -21,12 +20,12 @@
     var vm = require("vm");
     var path = require("path");
 
-    var env = makeModuleEnv(path.join(process.cwd(), "esquery-eval.js"));
+    var env = makeModuleEnv(path.join(process.cwd(), "sputter-eval.js"));
 
     return vm.runInNewContext(codeString, { require: env.require, node: node });
   }
 
-  function makeEsquery(options) {
+  function makeLibrary(options) {
     var getKeys =
       typeof options === "object" && options.getKeys
         ? options.getKeys
@@ -466,16 +465,16 @@
     return (query.query = query);
   }
 
-  var esqueryModule = makeEsquery();
-  esqueryModule.configure = makeEsquery;
+  var sputterModule = makeLibrary();
+  sputterModule.configure = makeLibrary;
 
   if (typeof define === "function" && define.amd) {
     define(function() {
-      return esqueryModule;
+      return sputterModule;
     });
   } else if (typeof module !== "undefined" && module.exports) {
-    module.exports = esqueryModule;
+    module.exports = sputterModule;
   } else {
-    this.esquery = esqueryModule;
+    this.sputter = sputterModule;
   }
 })();

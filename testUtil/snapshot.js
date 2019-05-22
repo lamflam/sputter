@@ -1,18 +1,12 @@
-const makeEsquery = require("../esquery").configure;
+const sputter = require("../sputter");
 const { parse } = require("@babel/parser");
 const { codeFrameColumns } = require("@babel/code-frame");
 const { wrap } = require("jest-snapshot-serializer-raw");
 
-const esquery = makeEsquery({
-  getKeys(node) {
-    return Object.keys(node);
-  },
-});
-
 module.exports = function snapshot(code, selector) {
   test(selector, () => {
     const ast = parse(code);
-    const matches = esquery(ast, selector);
+    const matches = sputter(ast, selector);
 
     const frames = matches.map((node) => {
       const codeFrame = codeFrameColumns(
