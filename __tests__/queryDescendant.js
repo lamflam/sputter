@@ -1,7 +1,7 @@
 const snapshot = require("../testUtil/snapshot");
 const fixtures = require("../testUtil/fixtures");
 
-describe("Pseudo matches query", () => {
+describe("Descendant query", () => {
   describe("conditional matches", () => {
     snapshot(fixtures.conditional, "Program IfStatement");
   });

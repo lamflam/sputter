@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pseudo matches query conditional matches :matches(IfStatement) 1`] = `
+exports[`Matches query conditional matches :matches(IfStatement) 1`] = `
 > 1 | if (x === 1) {
     | ^^^^^^^^^^^^^
 > 2 |   foo();
@@ -38,7 +38,7 @@ exports[`Pseudo matches query conditional matches :matches(IfStatement) 1`] = `
   11 | 
 `;
 
-exports[`Pseudo matches query for loop matches :matches(BinaryExpression, MemberExpression) 1`] = `
+exports[`Matches query for loop matches :matches(BinaryExpression, MemberExpression) 1`] = `
 > 1 | for (i = 0; i < foo.length; i++) {
     |             ^^^^^^^^^^^^^^ BinaryExpression
   2 |   foo[i]();
@@ -56,7 +56,7 @@ exports[`Pseudo matches query for loop matches :matches(BinaryExpression, Member
   4 | 
 `;
 
-exports[`Pseudo matches query implicit matches AssignmentExpression, BinaryExpression, NonExistant 1`] = `
+exports[`Matches query implicit matches AssignmentExpression, BinaryExpression, NonExistant 1`] = `
   1 | var x = 1;
   2 | var y = "y";
 > 3 | x = x * 2;
@@ -79,7 +79,7 @@ exports[`Pseudo matches query implicit matches AssignmentExpression, BinaryExpre
   7 | 
 `;
 
-exports[`Pseudo matches query simple function matches :matches([name="foo"], ReturnStatement) 1`] = `
+exports[`Matches query simple function matches :matches([name="foo"], ReturnStatement) 1`] = `
 > 1 | function foo(x, y) {
     |          ^^^ Identifier
   2 |   var z = x + y;
@@ -93,7 +93,7 @@ exports[`Pseudo matches query simple function matches :matches([name="foo"], Ret
   6 | 
 `;
 
-exports[`Pseudo matches query simple program matches :matches(AssignmentExpression, BinaryExpression) 1`] = `
+exports[`Matches query simple program matches :matches(AssignmentExpression, BinaryExpression) 1`] = `
   1 | var x = 1;
   2 | var y = "y";
 > 3 | x = x * 2;

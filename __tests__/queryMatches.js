@@ -1,7 +1,7 @@
 const snapshot = require("../testUtil/snapshot");
 const fixtures = require("../testUtil/fixtures");
 
-describe("Pseudo matches query", () => {
+describe("Matches query", () => {
   describe("conditional matches", () => {
     snapshot(fixtures.conditional, ":matches(IfStatement)");
   });

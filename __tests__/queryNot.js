@@ -1,7 +1,7 @@
 const snapshot = require("../testUtil/snapshot");
 const fixtures = require("../testUtil/fixtures");
 
-describe("Pseudo matches query", () => {
+describe("Not query", () => {
   describe("conditional", () => {
     snapshot(fixtures.conditional, ":not(Literal)");
   });

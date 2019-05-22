@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pseudo *-child query conditional first child :first-child 1`] = `
+exports[`*-child query conditional first child :first-child 1`] = `
 > 1 | if (x === 1) {
     | ^^^^^^^^^^^^^
 > 2 |   foo();
@@ -42,7 +42,7 @@ exports[`Pseudo *-child query conditional first child :first-child 1`] = `
   11 | 
 `;
 
-exports[`Pseudo *-child query conditional last child :last-child 1`] = `
+exports[`*-child query conditional last child :last-child 1`] = `
   1 | if (x === 1) {
 > 2 |   foo();
     |   ^^^^^^ ExpressionStatement
@@ -84,7 +84,7 @@ exports[`Pseudo *-child query conditional last child :last-child 1`] = `
   11 | 
 `;
 
-exports[`Pseudo *-child query conditional nth child :nth-child(2) 1`] = `
+exports[`*-child query conditional nth child :nth-child(2) 1`] = `
    4 |   x = 2;
    5 | }
 >  6 | if ((x == "test" && true) || x) {
@@ -100,7 +100,7 @@ exports[`Pseudo *-child query conditional nth child :nth-child(2) 1`] = `
   11 | 
 `;
 
-exports[`Pseudo *-child query conditional nth child :nth-last-child(2) 1`] = `
+exports[`*-child query conditional nth child :nth-last-child(2) 1`] = `
 > 1 | if (x === 1) {
     | ^^^^^^^^^^^^^
 > 2 |   foo();
@@ -116,7 +116,7 @@ exports[`Pseudo *-child query conditional nth child :nth-last-child(2) 1`] = `
   8 | } else if (false) {
 `;
 
-exports[`Pseudo *-child query for loop first child :first-child 1`] = `
+exports[`*-child query for loop first child :first-child 1`] = `
 > 1 | for (i = 0; i < foo.length; i++) {
     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 > 2 |   foo[i]();
@@ -131,7 +131,7 @@ exports[`Pseudo *-child query for loop first child :first-child 1`] = `
   4 | 
 `;
 
-exports[`Pseudo *-child query for loop last child :last-child 1`] = `
+exports[`*-child query for loop last child :last-child 1`] = `
 > 1 | for (i = 0; i < foo.length; i++) {
     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 > 2 |   foo[i]();
@@ -146,7 +146,7 @@ exports[`Pseudo *-child query for loop last child :last-child 1`] = `
   4 | 
 `;
 
-exports[`Pseudo *-child query for loop nth child :nth-last-child(1) 1`] = `
+exports[`*-child query for loop nth child :nth-last-child(1) 1`] = `
 > 1 | for (i = 0; i < foo.length; i++) {
     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 > 2 |   foo[i]();
@@ -161,7 +161,7 @@ exports[`Pseudo *-child query for loop nth child :nth-last-child(1) 1`] = `
   4 | 
 `;
 
-exports[`Pseudo *-child query simple function first child :first-child 1`] = `
+exports[`*-child query simple function first child :first-child 1`] = `
 > 1 | function foo(x, y) {
     | ^^^^^^^^^^^^^^^^^^^
 > 2 |   var z = x + y;
@@ -192,7 +192,7 @@ exports[`Pseudo *-child query simple function first child :first-child 1`] = `
   5 | }
 `;
 
-exports[`Pseudo *-child query simple function last child :last-child 1`] = `
+exports[`*-child query simple function last child :last-child 1`] = `
 > 1 | function foo(x, y) {
     | ^^^^^^^^^^^^^^^^^^^
 > 2 |   var z = x + y;
@@ -223,7 +223,7 @@ exports[`Pseudo *-child query simple function last child :last-child 1`] = `
   6 | 
 `;
 
-exports[`Pseudo *-child query simple function nth child :nth-child(2) 1`] = `
+exports[`*-child query simple function nth child :nth-child(2) 1`] = `
 > 1 | function foo(x, y) {
     |                 ^ Identifier
   2 |   var z = x + y;
@@ -238,7 +238,7 @@ exports[`Pseudo *-child query simple function nth child :nth-child(2) 1`] = `
   6 | 
 `;
 
-exports[`Pseudo *-child query simple function nth child :nth-child(3) 1`] = `
+exports[`*-child query simple function nth child :nth-child(3) 1`] = `
   2 |   var z = x + y;
   3 |   z++;
 > 4 |   return z;
@@ -247,7 +247,7 @@ exports[`Pseudo *-child query simple function nth child :nth-child(3) 1`] = `
   6 | 
 `;
 
-exports[`Pseudo *-child query simple function nth child :nth-last-child(2) 1`] = `
+exports[`*-child query simple function nth child :nth-last-child(2) 1`] = `
 > 1 | function foo(x, y) {
     |              ^ Identifier
   2 |   var z = x + y;
@@ -262,7 +262,7 @@ exports[`Pseudo *-child query simple function nth child :nth-last-child(2) 1`] =
   6 | 
 `;
 
-exports[`Pseudo *-child query simple program first child :first-child 1`] = `
+exports[`*-child query simple program first child :first-child 1`] = `
 > 1 | var x = 1;
     | ^^^^^^^^^^ VariableDeclaration
   2 | var y = "y";
@@ -287,7 +287,7 @@ exports[`Pseudo *-child query simple program first child :first-child 1`] = `
   7 | 
 `;
 
-exports[`Pseudo *-child query simple program last child :last-child 1`] = `
+exports[`*-child query simple program last child :last-child 1`] = `
 > 1 | var x = 1;
     |     ^^^^^ VariableDeclarator
   2 | var y = "y";
@@ -316,7 +316,7 @@ exports[`Pseudo *-child query simple program last child :last-child 1`] = `
   7 | 
 `;
 
-exports[`Pseudo *-child query simple program nth child :nth-child(2) 1`] = `
+exports[`*-child query simple program nth child :nth-child(2) 1`] = `
   1 | var x = 1;
 > 2 | var y = "y";
     | ^^^^^^^^^^^^ VariableDeclaration
@@ -325,7 +325,7 @@ exports[`Pseudo *-child query simple program nth child :nth-child(2) 1`] = `
   5 |   y += "z";
 `;
 
-exports[`Pseudo *-child query simple program nth child :nth-child(3) 1`] = `
+exports[`*-child query simple program nth child :nth-child(3) 1`] = `
   1 | var x = 1;
   2 | var y = "y";
 > 3 | x = x * 2;
@@ -335,7 +335,7 @@ exports[`Pseudo *-child query simple program nth child :nth-child(3) 1`] = `
   6 | }
 `;
 
-exports[`Pseudo *-child query simple program nth child :nth-last-child(2) 1`] = `
+exports[`*-child query simple program nth child :nth-last-child(2) 1`] = `
   1 | var x = 1;
   2 | var y = "y";
 > 3 | x = x * 2;

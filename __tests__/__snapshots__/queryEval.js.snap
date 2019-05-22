@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`:eval :eval('node.type === "VariableDeclarator"') 1`] = `
+> 1 | var x = 1;
+    |     ^^^^^ VariableDeclarator
+  2 | 
+`;
+
+exports[`:eval :eval('node.type === require("./testUtil/variableDeclarator")') 1`] = `
+> 1 | var x = 1;
+    |     ^^^^^ VariableDeclarator
+  2 | 
+`;
+
+exports[`:eval :eval('require("@babel/code-frame"), false') 1`] = ``;

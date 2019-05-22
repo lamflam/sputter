@@ -23,9 +23,7 @@
 
     var env = makeModuleEnv(path.join(process.cwd(), "esquery-eval.js"));
 
-    return Boolean(
-      vm.runInNewContext(codeString, { require: env.require, node: node })
-    );
+    return vm.runInNewContext(codeString, { require: env.require, node: node });
   }
 
   function makeEsquery(options) {
@@ -150,6 +148,9 @@
             });
           }
           return collector.length !== 0;
+
+        case "eval":
+          return Boolean(evalString(node, selector.string.value));
 
         case "child":
           if (matches(node, selector.right, ancestry)) {

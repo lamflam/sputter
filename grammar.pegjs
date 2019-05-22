@@ -49,7 +49,7 @@ sequence
 
 atom
   = wildcard / identifier / attr / field / negation / matches
-  / has / firstChild / lastChild / nthChild / nthLastChild / class
+  / has / eval / firstChild / lastChild / nthChild / nthLastChild / class
 
 wildcard = a:"*" { return { type: 'wildcard', value: a }; }
 identifier = "#"? i:identifierName { return { type: 'identifier', value: i }; }
@@ -89,6 +89,7 @@ field = "." i:identifierName is:("." identifierName)* {
 negation = ":not(" _ ss:selectors _ ")" { return { type: 'not', selectors: ss }; }
 matches = ":matches(" _ ss:selectors _ ")" { return { type: 'matches', selectors: ss }; }
 has = ":has(" _ ss:selectors _ ")" { return { type: 'has', selectors: ss }; }
+eval = ":eval(" _ str:string _ ")" { return { type: 'eval', string: str }; }
 
 firstChild = ":first-child" { return nth(1); }
 lastChild = ":last-child" { return nthLast(1); }

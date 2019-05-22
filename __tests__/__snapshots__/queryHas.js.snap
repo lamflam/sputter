@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Parent selector query chaining BinaryExpression:has(Identifier[name="x"]):has(Literal[value="test"]) 1`] = ``;
+exports[`Has query chaining BinaryExpression:has(Identifier[name="x"]):has(Literal[value="test"]) 1`] = ``;
 
-exports[`Parent selector query conditional ExpressionStatement:has([name="foo"][type="Identifier"]) 1`] = `
+exports[`Has query conditional ExpressionStatement:has([name="foo"][type="Identifier"]) 1`] = `
   1 | if (x === 1) {
 > 2 |   foo();
     |   ^^^^^^ ExpressionStatement
@@ -11,11 +11,11 @@ exports[`Parent selector query conditional ExpressionStatement:has([name="foo"][
   5 | }
 `;
 
-exports[`Parent selector query nesting Program:has(IfStatement:has(Literal[value=true], Literal[value=false])) 1`] = ``;
+exports[`Has query nesting Program:has(IfStatement:has(Literal[value=true], Literal[value=false])) 1`] = ``;
 
-exports[`Parent selector query non-matching :has([value="impossible"]) 1`] = ``;
+exports[`Has query non-matching :has([value="impossible"]) 1`] = ``;
 
-exports[`Parent selector query one of IfStatement:has(LogicalExpression [name="foo"], LogicalExpression [name="x"]) 1`] = `
+exports[`Has query one of IfStatement:has(LogicalExpression [name="foo"], LogicalExpression [name="x"]) 1`] = `
    4 |   x = 2;
    5 | }
 >  6 | if ((x == "test" && true) || x) {

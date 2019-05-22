@@ -1,7 +1,7 @@
 const snapshot = require("../testUtil/snapshot");
 const fixtures = require("../testUtil/fixtures");
 
-describe("Pseudo *-child query", () => {
+describe("*-child query", () => {
   describe("conditional first child", () => {
     snapshot(fixtures.conditional, ":first-child");
   });
